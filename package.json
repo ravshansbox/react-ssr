@@ -1,3 +1,7 @@
 {
-  "name": "react-ssr"
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "react-ssr",
+  "devDependencies": {
+    "prettier": "^3.5.3"
+  }
 }
