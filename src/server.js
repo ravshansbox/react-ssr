@@ -3,10 +3,15 @@ import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router';
 import { wrapContent } from './wrapContent';
 import { App } from './App';
+import { routes } from './routes';
 
 const server = http.createServer();
 
+const paths = routes.map((route) => route.path);
+
 server.on('request', (request, response) => {
+  const hasRoute = paths.includes(request.url);
+  response.statusCode = hasRoute ? 200 : 404;
   response.setHeader('content-type', 'text/html');
   const title = 'React SSR';
   const content = renderToString(
