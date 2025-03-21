@@ -1,15 +1,15 @@
 import { NavLink } from 'react-router';
+import { routes } from './routes';
 
 export const Navbar = () => {
   return (
     <nav>
       <ul>
-        <li>
-          <NavLink to="/">Home</NavLink>
-        </li>
-        <li>
-          <NavLink to="/about">About</NavLink>
-        </li>
+        {routes.map(({ path, title }) => (
+          <li key={path}>
+            <NavLink to={path}>{title}</NavLink>
+          </li>
+        ))}
       </ul>
     </nav>
   );

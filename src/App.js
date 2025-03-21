@@ -1,7 +1,6 @@
 import { Navbar } from './Navbar';
 import { Routes, Route } from 'react-router';
-import { Home } from './pages/Home';
-import { About } from './pages/About';
+import { routes } from './routes';
 import { NotFound } from './NotFound';
 
 export const App = () => {
@@ -9,9 +8,10 @@ export const App = () => {
     <>
       <Navbar />
       <Routes>
-        <Route path="/" Component={Home} />
-        <Route path="/about" Component={About} />
-        <Route path="/*" Component={NotFound} />
+        {routes.map(({ path, Component }) => (
+          <Route key={path} path={path} Component={Component} />
+        ))}
+        <Route path="*" Component={NotFound} />
       </Routes>
     </>
   );
